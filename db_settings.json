@@ -1,7 +1,7 @@
 {
 "db_connection":[
 	{
-	"host":"127.0.0.1",
+	"host":"mysql_ml_app",
 	"user":"bds_user",
 	"password":"P@s$W0Rd$23",
 	"database":"bds_classification"}
