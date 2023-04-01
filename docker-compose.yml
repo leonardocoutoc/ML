@@ -5,28 +5,33 @@ services:
     tty: true
     image: python:alpine3.17
     depends_on:
-      - mysql_ml_app
+      - mysql_ml_app_db
     working_dir: /opt/ml_app
     #command: sh -c "apk add git && git clone https://github.com/leonardocoutoc/ML && python3 -m venv ML && source ./ML/bin/activate && pip install mysql-connector-python && cd ./ML && python main.py"
     #command: ["sh", "-c", "cd", "./ML", "&&", "python main.py"]
     networks:
       - mysql-python-network
     
-  mysql_ml_app:
-    container_name: mysql_ml_app
+  mysql_ml_app_db:
+    container_name: mysql_ml_app_db
     image: mysql:latest
+    tty: true
     restart: always
     environment:
-      MYSQL_DATABASE: 'bds_classification'
-      MYSQL_USER: 'bds_user'
-      MYSQL_PASSWORD: 'P@s$W0Rd$23'
-      MYSQL_ROOT_PASSWORD: 'P@s$W0Rd$23'
+      - MYSQL_ROOT_PASSWORD=123senha
+      - MYSQL_DATABASE=bds_classification
+      - MYSQL_USER=bds_user
+      - MYSQL_PASSWORD=123senha
+    volumes:
+      - db-data_ml_app:/var/lib/mysql
     ports:
       - '3306:3306'
     networks:
       - mysql-python-network
-
 networks:
   mysql-python-network:
+
+volumes:
+  db-data_ml_app:
 
 

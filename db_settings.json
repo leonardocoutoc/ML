@@ -1,9 +1,9 @@
 {
 "db_connection":[
 	{
-	"host":"mysql_ml_app",
+	"host":"mysql_ml_app_db",
 	"user":"bds_user",
-	"password":"P@s$W0Rd$23",
+	"password":"123senha",
 	"database":"bds_classification"}
 	]
 }
