@@ -45,7 +45,7 @@ def send_mail_to_managers():
 
         if manager_email and bd_name and owner_name is not None:
             print("Sending mail to:", manager_email, "Owner, DB and Classification: ", owner_name, bd_name ,"confidentiality")
-            #send_mail(owner_name,manager_email,bd_name,"confidentiality")        
+            send_mail(owner_name,manager_email,bd_name,"confidentiality")        
             
     integrity_data=p_notifica_m.get_bd_integrity()
     for row in integrity_data:
@@ -54,7 +54,7 @@ def send_mail_to_managers():
         owner_name=row[2]
         if manager_email and bd_name and owner_name is not None:
             print("Sending mail to:", manager_email, "Owner, DB and Classification: ", owner_name, bd_name ,"integrity")
-            #send_mail(owner_name,manager_email,bd_name,"integrity")            
+            send_mail(owner_name,manager_email,bd_name,"integrity")            
 
     availability_data=p_notifica_m.get_bd_availability()
     for row in availability_data:
@@ -63,7 +63,7 @@ def send_mail_to_managers():
         owner_name=row[2]
         if manager_email and bd_name and owner_name is not None:
             print("Sending mail to:", manager_email, "Owner, DB amd Classification: ", owner_name, bd_name ,"availability")
-            #send_mail(owner_name,manager_email,bd_name,"availability")
+            send_mail(owner_name,manager_email,bd_name,"availability")
             
 
 
