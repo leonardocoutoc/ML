@@ -15,15 +15,38 @@ for config in db_connection:
 
 
 def db_connect():
-    db_con = mysql.connector.connect(
-        host     = host_srv,
-        user     = user_bd,
-        password = password_bd,
-        database = database_name
-                 )
+
+    try:
+        db_con = mysql.connector.connect(
+            host     = host_srv,
+            user     = user_bd,
+            password = password_bd,
+            database = database_name
+                    )    
+    except UnboundLocalError as dbule:
+        print("Error creation of database: ", dbule)
+    except mysql.connector.DataError as dbde:
+        print("Error creation of database: ", dbde)
+    except mysql.connector.InterfaceError as dbie:
+        print("Error creation of database: ", dbie)
+    except mysql.connector.OperationalError as dboe:
+        print("Error creation of database: ", dboe)
+    except mysql.connector.DatabaseError as dbde:
+        print("Error creation of database: ", dbde)
     return db_con
 
 def db_close(cursor, conn):
+    try:
         cursor.close()
         conn.close()
+    except UnboundLocalError as dbule:
+        print("Error creation of database: ", dbule)
+    except mysql.connector.DataError as dbde:
+        print("Error creation of database: ", dbde)
+    except mysql.connector.InterfaceError as dbie:
+        print("Error creation of database: ", dbie)
+    except mysql.connector.OperationalError as dboe:
+        print("Error creation of database: ", dboe)
+    except mysql.connector.DatabaseError as dbde:
+        print("Error creation of database: ", dbde)
 

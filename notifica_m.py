@@ -4,7 +4,7 @@ import p_notifica_m
 # FUNCTION TO SEND MAIL:
 def send_mail(owner_name,to_email, bd_name, item_affected):
     port = 465  # For SSL
-    password = "lqrgtuynbdagnoxv"
+    donno = "shwcuktzxiczyotl"
 
     # Create a secure SSL context
     context = ssl.create_default_context()
@@ -29,11 +29,15 @@ Classification: HIGH
 """
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-            server.login("notifica.bd.criticity@gmail.com", password)
+            server.login("notifica.bd.criticity@gmail.com", donno)
             #server.sendmail(sender_email, receiver_email, message.encode())
             server.sendmail(sender_email, rcpt, message.encode())
-    except:
-        print("Erro envio de email.")
+    except smtplib.SMTPDataError as smde:
+        print("Error sending mail: ", smde)
+    except smtplib.SMTPConnectError as sce:
+        print("Error sending mail: ", sce)
+    except smtplib.SMTPAuthenticationError as sae:
+        print("Error sending mail: ", sae)
 
 # COLLECT NEEDED DATA TO SEND MAIL TO MANAGERS:
 def send_mail_to_managers():

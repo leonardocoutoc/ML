@@ -2,7 +2,7 @@
 "db_connection":[
 	{
 	"host":"mysql_ml_app_db",
-	"user":"bds_user",
+	"user":"root",
 	"password":"123senha",
 	"database":"bds_classification"}
 	]
