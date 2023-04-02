@@ -1,14 +1,18 @@
 version: "3.9"  # optional since v1.27.0
 services:
   ml_app:
-    container_name: ml_app
+    container_name: ml_app_2
     tty: true
-    image: python:alpine3.17
+    image: leonardocoutoc/python:mlapp2.0-release
     depends_on:
       - mysql_ml_app_db
-    working_dir: /opt/ml_app
-    #command: sh -c "apk add git && git clone https://github.com/leonardocoutoc/ML && python3 -m venv ML && source ./ML/bin/activate && pip install mysql-connector-python && cd ./ML && python main.py"
-    #command: ["sh", "-c", "cd", "./ML", "&&", "python main.py"]
+    working_dir: /opt/ml_app/ML
+    environment:
+      - WAIT_HOSTS=mysql_ml_app_db:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    command: ["python", "main.py"]
     networks:
       - mysql-python-network
     

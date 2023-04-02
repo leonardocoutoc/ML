@@ -3,7 +3,7 @@
 	{
 	"host":"mysql_ml_app_db",
 	"user":"bds_user",
-	"password":"123senha",
+	"password":"P@s$W0Rd$23",
 	"database":"bds_classification"}
 	]
 }

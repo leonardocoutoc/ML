@@ -15,14 +15,20 @@ for config in db_connection:
     database_name=config['database']
 
 def create_database():
-    
-    db_con_2 = mysql.connector.connect(
-        host     = host_srv,
-        user     = user_bd,
-        password = password_bd
-    )
-    conn_2 = db_con_2
-    cursor_2 = conn_2.cursor()
+
+    print("Waiting for MySQL service, please wait...")
+    time.sleep(12)
+
+    try:    
+        db_con_2 = mysql.connector.connect(
+            host     = host_srv,
+            user     = user_bd,
+            password = password_bd
+        )
+        conn_2 = db_con_2
+        cursor_2 = conn_2.cursor()
+    except:
+        ("Error: Please verify if MySQL service is up.")
     
     sql_create_db="CREATE DATABASE IF NOT EXISTS `bds_classification`"
     sql_use_db="USE `bds_classification`"    
