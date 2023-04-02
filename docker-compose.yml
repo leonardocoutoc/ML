@@ -1,17 +1,16 @@
 version: "3.9"  # optional since v1.27.0
 services:
   ml_app:
-    container_name: ml_app_1_3
+    container_name: ml_app_1_4
     tty: true
-    image: leonardocoutoc/python:mlapp1.3-release
+    image: leonardocoutoc/python:mlapp1.4-release
     depends_on:
       - mysql_ml_app_db
     working_dir: /opt/ml_app/ML
-    #command: ["python", "main.py"]
-    command: sh -c "sleep 15 && mysql -u root -p123senha -h mysql_ml_app_db < bds_classification.sql && python main.py"
+    command: sh start_ml_app.sh
     networks:
       - mysql-python-network
-    
+
   mysql_ml_app_db:
     container_name: mysql_ml_app_db
     image: mysql:8.0
