@@ -4,7 +4,7 @@ import p_notifica_m
 # FUNCTION TO SEND MAIL:
 def send_mail(owner_name,to_email, bd_name, item_affected):
     port = 465  # For SSL
-    donno = "shwcuktzxiczyotl_abb"
+    donno = "shwcuktzxiczyotl"
 
     # Create a secure SSL context
     context = ssl.create_default_context()
