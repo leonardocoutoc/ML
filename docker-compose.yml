@@ -1,9 +1,9 @@
 version: "3.9"  # optional since v1.27.0
 services:
-  ml_app:
-    container_name: ml_app_3
+  ml_app_12:
+    container_name: ml_app_1_2
     tty: true
-    image: leonardocoutoc/python:mlapp1.1-release
+    image: leonardocoutoc/python:mlapp1.2-release
     depends_on:
       - mysql_ml_app_db
     working_dir: /opt/ml_app/ML
