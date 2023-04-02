@@ -3,7 +3,7 @@ services:
   ml_app:
     container_name: ml_app_3
     tty: true
-    image: leonardocoutoc/python:mlapp3.0-release
+    image: leonardocoutoc/python:mlapp1.1-release
     depends_on:
       - mysql_ml_app_db
     working_dir: /opt/ml_app/ML
@@ -13,24 +13,14 @@ services:
     
   mysql_ml_app_db:
     container_name: mysql_ml_app_db
-    image: mysql:latest
+    image: mysql:8.0
     tty: true
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=123senha
-      - MYSQL_DATABASE=bds_classification
-      - MYSQL_USER=bds_user
-      - MYSQL_PASSWORD=123senha
-    volumes:
-      - db-data_ml_app:/var/lib/mysql
     ports:
       - '3306:3306'
     networks:
       - mysql-python-network
 networks:
   mysql-python-network:
-
-volumes:
-  db-data_ml_app:
-
-
